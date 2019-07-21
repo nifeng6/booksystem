@@ -29,7 +29,7 @@ public class ShiroConfig {
          *  role：必须获取角色授权才能访问
          */
         Map<String,String> filterMap = new LinkedHashMap<String,String>();
-        filterMap.put("anon","/login");
+//        filterMap.put("anon","/login");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
 
         return shiroFilterFactoryBean;
