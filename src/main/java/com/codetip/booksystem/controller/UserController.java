@@ -43,7 +43,7 @@ public class UserController {
             result.put("success", true);
             result.put("msg","登陆成功");
             User user = userService.findByName(name);
-            //SecurityUtils.getSubject().getSession().setAttribute("currentUser", user); //把当前用户信息存到session中
+            SecurityUtils.getSubject().getSession().setAttribute("currentUser", user); //把当前用户信息存到session中
         } catch (UnknownAccountException e) {
             result.put("success", false);
             result.put("msg","用户名不存在");

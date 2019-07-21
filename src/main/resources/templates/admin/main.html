@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${application.config.webName}+-后台"></title>
-
+<div th:include="/common/layui"></div>
+<div th:include="/common/jq"></div>
 <!--添加 layui 自己的js  支持加载-->
 <script	src="/manage/manage_base.js"></script>
 <!--添加 layui 自己的js  支持加载-->
@@ -27,7 +28,25 @@ html,body{
 </script>
 <body>
 <div style="display: flex;display: -webkit-flex; flex-direction:column; height: 100%; ">
-	后台。
+	<div style="height: 60px; width: 100%;">
+		<div th:include="/common/managetop">
+		</div>
+	</div>
+
+
+	<div style=" flex:1;-webkit-flex:1;">
+		<div th:include="/common/left_menu">
+		</div>
+
+		<div id="main_scroll" style="flex:1;-webkit-flex:1;padding-left: 200px;">
+			<div class="layui-tab layui-tab-brief" lay-allowclose="true"  style="margin: 0;"  lay-filter="layer_tab">
+				<ul class="layui-tab-title">
+				</ul>
+				<div class="layui-tab-content" style="padding:0px;">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 

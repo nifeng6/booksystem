@@ -1,0 +1,65 @@
+<meta charset="UTF-8" />
+
+<script>
+	function hide_left_menu() {
+		$("#left_menu").toggle();
+		//判断display  是啥  display: none;  display: block;
+		var display_ = $("#left_menu").css("display");
+		if (display_ == 'none') {
+			$("#main_scroll").css("padding-left", "0px");
+			left_width = 0 ;
+		} else {
+			$("#main_scroll").css("padding-left", "200px");
+			left_width =200;
+		}
+		init_tab_height();
+	}
+
+</script>
+
+<style>
+	/* 顶部 导航整块的间距取消   默认20 */
+	.layui-nav{
+		padding: 0 0px;
+	}
+	/* 顶部 导航 菜单 之间 间距15  默认20 */
+	.layui-nav .layui-nav-item a {
+		padding: 0 15px;
+	}
+</style>
+
+<div style="height: 60px; width: 100%; background-color: #23262E; display: flex; display: -webkit-flex;">
+	<div style="width: 200px; text-align: center; vertical-align: middle; overflow: hidden;">
+		<a  target="_blank" style="display: block;" href="javascript:void()"><img alt="图标" style="vertical-align: middle;  "
+																				  src="/image/base/houtai_logo.jpg"></a>
+	</div>
+
+
+	<div style="flex: 1; -webkit-flex: 1; ">
+		<ul class="layui-nav">
+			<li class="layui-nav-item"><a href="javascript:;" onclick="hide_left_menu()">切换侧边导航</a></li>
+			<li class="layui-nav-item"><a href="/admin/main">刷新页面</a></li>
+			<li class="layui-nav-item"><a onclick="toggleFullScreen()">全屏/退出</a></li>
+			<li class="layui-nav-item"><a href="javascript:;">qq/qq群:194908655</a></li>
+		</ul>
+	</div>
+
+	<div style="  border-left: 1px solid #befffe; color: #c2c2c2;  background-color: #393D49;">
+		<ul class="layui-nav">
+			<li class="layui-nav-item"><a href="javascript:;"
+										  class="admin-header-user"> <img
+					src="/image/base/default_head_img.jpg"
+					style="width: 40px; height: 40px; border-radius: 100%;"> <span th:text="${session.currentUser.trueName}">昵称</span>
+				<span class="layui-nav-more"></span></a>
+				<dl class="layui-nav-child my_top_menu layui-anim layui-anim-upbit">
+					<dd>
+						<a href="/user/logout">注销</a>
+					</dd>
+				</dl></li>
+		</ul>
+	</div>
+
+
+
+</div>
+
