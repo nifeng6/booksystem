@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" >
+<head>
+<meta charset="UTF-8">
+<title th:text="${application.config.webName}+-后台"></title>
+
+<!--添加 layui 自己的js  支持加载-->
+<script	src="/manage/manage_base.js"></script>
+<!--添加 layui 自己的js  支持加载-->
+
+</head>
+
+<style>
+html,body{
+	min-width: 1024px;
+	 height:100%; 
+	 overflow: hidden;
+}
+.layui-tab-item{
+	overflow-x: scroll;
+}
+</style>
+
+<script>
+
+</script>
+<body>
+<div style="display: flex;display: -webkit-flex; flex-direction:column; height: 100%; ">
+	后台。
+</div>
+
+
+</body>
+<script>
+	layui.use([ 'laydate', 'laypage', 'layer', 'table', 'carousel',
+			'upload', 'element' ], function() {
+		var laydate = layui.laydate //日期
+		, laypage = layui.laypage //分页
+		,layer = layui.layer //弹层
+		, table = layui.table //表格
+		, carousel = layui.carousel //轮播
+		, upload = layui.upload //上传
+		, element = layui.element; //元素操作
+		
+		//监听导航点击
+		element.on('nav(left_menu)', function(elem){
+			// $(this)
+			elem = $(this).parent();
+			
+		    var id = $(elem).attr("id");
+			var url = $(elem).attr("url");
+			var text = $(elem).attr("dd_text");
+			
+			console.log(id);
+			console.log(url);
+			console.log(text);
+			if(id){
+				var content = "<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='"+url+"'></iframe>";
+				addTab(id,text,content);
+			}
+			
+		  });
+		
+	});
+</script>
+
+
+</html>

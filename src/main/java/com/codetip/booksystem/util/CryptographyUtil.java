@@ -14,7 +14,9 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 public class CryptographyUtil {
 	
 	public static void main(String[] args) throws Exception {
+		//用于测试加密程序
 		System.out.println(md5("123456", "java"));
+
 	}
 	
 	/**
@@ -25,6 +27,8 @@ public class CryptographyUtil {
 	 * @param salt
 	 *            盐值
 	 */
+
+	//这个方法主要是为了在我们将密码传入数据库时进行加密使用
 	public static String md5(String pwd, String salt) {
 		return new Md5Hash(pwd, salt).toString();
 	}

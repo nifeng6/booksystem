@@ -65,9 +65,11 @@ public class MyReal extends AuthorizingRealm{
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String name=(String)token.getPrincipal();//用户名  UsernamePasswordTokenr的第一个参数  name
         User user=userService.findByName(name);
-        if(user!=null){
-            AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getName(),user.getPwd(),"xxx");
-            return authcInfo;
+        if(user!=null){//这里的一步主要是来判断密码是否正确
+            //👇对于我的理解第一个值应该放用户对象进去，这样我们在进行上面的授权操作的时候可以更好的获取对象，来添加用户权限
+            //AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getName(),user.getPwd(),"xxx");
+            // 👆这是另外一种方法，不过我喜欢直接返回一个new对象，减少代码哈哈
+            return new SimpleAuthenticationInfo(user.getName(),user.getPwd(),"xxx");
         }else{
             return null;
         }
