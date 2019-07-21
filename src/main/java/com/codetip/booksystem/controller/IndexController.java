@@ -1,6 +1,7 @@
 package com.codetip.booksystem.controller;
 
 import com.codetip.booksystem.service.ConfigService;
+import com.codetip.booksystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,11 +55,11 @@ public class IndexController {
     }
 
     @Autowired
-    private ConfigService configService;
+    private UserService userService;
     @RequestMapping("/test")
     @ResponseBody
-    public Object test(){
-        return configService.find();
+    public Object test(String name){
+        return userService.findByName(name);
     }
 
 }
