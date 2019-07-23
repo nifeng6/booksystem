@@ -1,17 +1,41 @@
 package com.codetip.booksystem.domain;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 public class User {
 
   private Integer id;
-  private java.sql.Timestamp createDateTime;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")//通过valid注解获取当前时间，我真是个小天才
+  private Date createDateTime;
+  @NotNull(message="用户名不能为空！")
   private String name;
+  @NotNull(message="排序号不能为空！")
   private Integer orderNo;
   private String pwd;
   private String remark;
+  @NotNull(message="真实姓名不能为空！")
   private String trueName;
-  private java.sql.Timestamp updateDateTime;
+  private String updateDateTime;
   private Integer roleId;
+
+  public Date getCreateDateTime() {
+    return createDateTime;
+  }
+
+  public void setCreateDateTime(Date createDateTime) {
+    this.createDateTime = createDateTime;
+  }
+
+  public void setUpdateDateTime(String updateDateTime) {
+    this.updateDateTime = updateDateTime;
+  }
+
+  public String getUpdateDateTime() {
+    return updateDateTime;
+  }
 
 
   public Integer getId() {
@@ -20,15 +44,6 @@ public class User {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-
-  public java.sql.Timestamp getCreateDateTime() {
-    return createDateTime;
-  }
-
-  public void setCreateDateTime(java.sql.Timestamp createDateTime) {
-    this.createDateTime = createDateTime;
   }
 
 
@@ -75,16 +90,6 @@ public class User {
   public void setTrueName(String trueName) {
     this.trueName = trueName;
   }
-
-
-  public java.sql.Timestamp getUpdateDateTime() {
-    return updateDateTime;
-  }
-
-  public void setUpdateDateTime(java.sql.Timestamp updateDateTime) {
-    this.updateDateTime = updateDateTime;
-  }
-
 
   public Integer getRoleId() {
     return roleId;

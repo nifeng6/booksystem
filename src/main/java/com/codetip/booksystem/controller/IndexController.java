@@ -52,12 +52,6 @@ public class IndexController {
         return "/admin/main";
     }
 
-    @Autowired
-    private UserService userService;
-    @RequestMapping("/test")
-    @ResponseBody
-    public Object test(String name){
-        return userService.findByName(name);
-    }
+
 
 }

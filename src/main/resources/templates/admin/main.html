@@ -25,7 +25,77 @@ html,body{
 
 <script>
 
+	//定义在外面
+	var table;
+	var element;
+	layui.use([ 'laydate', 'laypage', 'layer','form', 'table', 'carousel',
+		'upload', 'element' ], function() {
+		table = layui.table;
+		element = layui.element; //元素操作
+	});
+
+	//这个值是由  manage_top.jsp里面的一个显示隐藏的侧边的方法控制
+	var left_width = 200 ;
+
+	//可以从子页面传来个 关闭  由我关闭
+	function delete_tab_id(id){
+		element.tabDelete('layer_tab', id); //
+	}
+
+	$(function(){
+		init_tab_height();
+		window.onresize = function(){
+			init_tab_height();
+		}
+	});
+
+
+	//遍历选项卡，存在true  不存在false
+	function for_tab(id){
+		add_flag = false;
+		$(".layui-tab-title li").each(function(){
+			var lay_id = $(this).attr("lay-id");
+			console.log(lay_id);
+			if(lay_id){
+				if(lay_id==id){
+					add_flag = true;
+				}
+			}
+		});
+		return add_flag;
+	}
+
+	function init_tab_height(){
+		var body_width = document.body.offsetWidth;
+		layui_tab_item_width = (body_width-left_width);
+		console.log("layui_tab_item的宽是:"+layui_tab_item_width);
+
+		//计算layui-tab-item 需要 设置多少的高 顶部的60  layui-tab-title=41
+		var body_height = document.body.offsetHeight;
+		layui_tab_item_height = (body_height-60-41);
+		$(".layui-tab-item").css("height",layui_tab_item_height+"px");
+		console.log("layui_tab_item的高是:"+layui_tab_item_height);
+	}
+
+	function addTab(id,title,content){
+		//遍历tab 看看这个id是否存在  如果存在直接切换
+		var s = for_tab(id);
+		if(s){
+			element.tabChange('layer_tab', id); //切换到 用户点的
+			init_tab_height();
+		}else{
+			//添加
+			element.tabAdd('layer_tab', {
+				title: title
+				,content: content
+				,id: id
+			});
+			element.tabChange('layer_tab', id); //切换到 用户点的
+			init_tab_height();
+		}
+	}
 </script>
+
 <body>
 <div style="display: flex;display: -webkit-flex; flex-direction:column; height: 100%; ">
 	<div style="height: 60px; width: 100%;">
