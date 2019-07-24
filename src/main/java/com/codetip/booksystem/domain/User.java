@@ -18,8 +18,16 @@ public class User {
   private String remark;
   @NotNull(message="真实姓名不能为空！")
   private String trueName;
-  private String updateDateTime;
+  private Date updateDateTime;
   private Integer roleId;
+
+  public Date getUpdateDateTime() {
+    return updateDateTime;
+  }
+
+  public void setUpdateDateTime(Date updateDateTime) {
+    this.updateDateTime = updateDateTime;
+  }
 
   public Date getCreateDateTime() {
     return createDateTime;
@@ -28,15 +36,6 @@ public class User {
   public void setCreateDateTime(Date createDateTime) {
     this.createDateTime = createDateTime;
   }
-
-  public void setUpdateDateTime(String updateDateTime) {
-    this.updateDateTime = updateDateTime;
-  }
-
-  public String getUpdateDateTime() {
-    return updateDateTime;
-  }
-
 
   public Integer getId() {
     return id;

@@ -73,7 +73,21 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
-
+        <!--pagehelp分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.gitee.hengboy</groupId>-->
+<!--            <artifactId>spring-boot-starter-mybatis-pageable</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.data</groupId>-->
+<!--            <artifactId>spring-data-commons</artifactId>-->
+<!--            <version>2.1.9.RELEASE</version>-->
+<!--        </dependency>-->
         <!--用于valid测试用-->
 <!--        <dependency>-->
 <!--            <groupId>javax.validation</groupId>-->
